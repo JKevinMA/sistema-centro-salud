@@ -1,0 +1,169 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Registrar Personal Médico</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a>Personal Médico</a></li>
+                    <li class="breadcrumb-item active">Registrar Personal Médico</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form autocomplete="off" id="formularioRegPersonalMedico" (ngSubmit)="registrar(forma)" #forma="ngForm">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos Personales</h3>
+                    </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputDNI" class="col-sm-3 col-form-label text-right">DNI</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="persona.DNI" type="number" class="form-control" id="inputDNI" name="DNI"
+                                                placeholder="Ej: 12345678">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputNombre"
+                                            class="col-sm-3 col-form-label text-right">Nombre</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="persona.Nombre" name="Nombre" type="text" class="form-control" id="inputNombre"
+                                                placeholder="Ej: José">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputApellidoPaterno"
+                                            class="col-sm-3 col-form-label text-right">Apellido Paterno</label>
+                                        <div class="col-sm-9">
+                                            <input  [(ngModel)]="persona.Apellido_Paterno" name="Apellido_Paterno" type="text" class="form-control" id="inputApellidoPaterno"
+                                                placeholder="Ej: Navarro">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputCorreo"
+                                            class="col-sm-3 col-form-label text-right">Correo</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="personalMedico.Correo" name="Correo" type="email" class="form-control" id="inputCorreo"
+                                                placeholder="Ej: jnavarro@gmail.com">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputCelular" class="col-sm-3 col-form-label text-right">N°
+                                            Celular</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="persona.Celular" name="Celular" type="text" class="form-control" id="inputCelular"
+                                                placeholder="Ej: 987654321">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputFechaNacimiento" class="col-sm-3 col-form-label text-right">Fecha de
+                                            Nacimiento</label>
+                                        <div class="input-group date col-sm-9" id="reservationdate"
+                                            data-target-input="nearest">
+                                            <input id="inputFechaNacimiento" class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                                [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                            <div class="input-group-append" (click)="d.toggle()">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputApellidoMaterno"
+                                            class="col-sm-3 col-form-label text-right">Apellido Materno</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="persona.Apellido_Materno" name="Apellido_Materno"  type="text"  class="form-control" id="inputApellidoMaterno"
+                                                placeholder="Ej: Navarro">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSexo" class="col-sm-3 col-form-label text-right">Sexo</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="persona.Sexo" name="Sexo" id="inputSexo" class="custom-select">
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Femenino</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Datos del Personal</h3>
+                    </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputUsuario" class="col-sm-3 col-form-label text-right">Usuario</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="personalMedico.Usuario" type="text" class="form-control" id="inputUsuario" name="Usuario"
+                                                placeholder="Ej: jnavarro">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputContrasena" class="col-sm-3 col-form-label text-right">
+                                            Contraseña</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="personalMedico.Contrasena" name="Contrasena" type="text" class="form-control" id="inputContrasena"
+                                                placeholder="Ej: ja1235">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputTurno" class="col-sm-3 col-form-label text-right">Turno</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="personalMedico.Horario_idHorario" name="Horario_idHorario" id="inputTurno" class="custom-select">
+                                                <option value="0">Seleccione uno</option>
+                                                <option [value]="horario.idHorario" *ngFor="let horario of horarios" >{{horario.Turno}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputRol" class="col-sm-3 col-form-label text-right">Rol</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="personalMedico.Rol_idRol" name="Horario_idHorario" id="inputRol" class="custom-select">
+                                                <option value="0">Seleccione uno</option>
+                                                <option [value]="rol.idRol" *ngFor="let rol of roles" >{{rol.Descripcion}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    <div class="row justify-content-between">
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-success btn-block">Registrar</button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-danger btn-block">Salir</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</section>
