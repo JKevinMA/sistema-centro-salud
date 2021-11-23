@@ -1,0 +1,182 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Registrar Cita Médica</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a>Citas Médicas</a></li>
+                    <li class="breadcrumb-item active">Registrar Cita Médica</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Buscar Paciente</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputSearchDNI" class="col-sm-3 col-form-label text-right">DNI</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="dni" name="inputSearchDNI" type="number"
+                                            class="form-control" id="inputSearchDNI"
+                                            placeholder="Ingrese N° DNI a buscar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button (click)="buscarDni()" class="btn btn-warning"> Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Detalle del Paciente</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputNombre" class="col-sm-3 col-form-label text-right">Nombre</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Nombre" readonly name="Nombre" type="text"
+                                            class="form-control" id="inputNombre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputDNI" class="col-sm-3 col-form-label text-right">DNI</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.DNI" readonly name="DNI" type="number"
+                                            class="form-control" id="inputDNI">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputApellido_Paterno"
+                                        class="col-sm-3 col-form-label text-right">Apellido Paterno</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Apellido_Paterno" readonly
+                                            name="Apellido_Paterno" type="text" class="form-control"
+                                            id="inputApellido_Paterno">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputApellido_Materno"
+                                        class="col-sm-3 col-form-label text-right">Apellido Materno</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Apellido_Materno" readonly
+                                            name="Apellido_Materno" type="text" class="form-control"
+                                            id="inputApellido_Materno">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEdad" class="col-sm-3 col-form-label text-right">Edad</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Edad" readonly name="Edad" type="text"
+                                            class="form-control" id="inputEdad">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputSexo" class="col-sm-3 col-form-label text-right">Sexo</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Sexo" readonly name="Sexo" type="text"
+                                            class="form-control" id="inputSexo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <form autocomplete="off" id="formularioRegCitaMedica" (ngSubmit)="registrar(forma)" #forma="ngForm">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Cita Médica</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputFecha" class="col-sm-3 col-form-label text-right">Fecha</label>
+                                        <div class="input-group date col-sm-9" id="reservationdate"
+                                            data-target-input="nearest">
+                                            <input id="inputFecha" class="form-control" placeholder="yyyy-mm-dd"
+                                                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                            <div class="input-group-append" (click)="d.toggle()">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="selectHora" class="col-sm-3 col-form-label text-right">Hora</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="citamedica.Hora" name="Hora" id="selectHora"
+                                                class="custom-select">
+                                                <option value="0" selected>Seleccione uno</option>
+                                                <option value="08:00">08:00 AM</option>
+                                                <option value="08:30">08:30 AM</option>
+                                                <option value="09:00">09:00 AM</option>
+                                                <option value="09:30">09:30 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="10:30">10:30 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="11:30">11:30 AM</option>
+                                                <option value="12:00">12:00 PM</option>
+                                                <option value="12:30">12:30 PM</option>
+                                                <option value="13:00">01:00 PM</option>
+                                                <option value="13:30">01:30 PM</option>
+                                                <option value="14:00">02:00 PM</option>
+                                                <option value="14:30">02:30 PM</option>
+                                                <option value="15:00">03:00 PM</option>
+                                                <option value="15:30">03:30 PM</option>
+                                                <option value="16:00">04:00 PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-success btn-block">Registrar</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger btn-block">Salir</button>
+                        </div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

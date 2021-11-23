@@ -1,55 +1,42 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { combineLatest } from 'rxjs';
-import { Horario } from 'src/app/models/horario.model';
+import { Paciente } from 'src/app/models/paciente.model';
 import { Persona } from 'src/app/models/persona.model';
-import { PersonalMedico } from 'src/app/models/personal-medico';
-import { Rol } from 'src/app/models/roles.model';
 import { ApiService } from 'src/app/services/api.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registrar-personal-medico',
-  templateUrl: './registrar-personal-medico.component.html',
-  styleUrls: ['./registrar-personal-medico.component.css']
+  selector: 'app-generar-historia-clinica',
+  templateUrl: './generar-historia-clinica.component.html',
+  styleUrls: ['./generar-historia-clinica.component.css']
 })
-export class RegistrarPersonalMedicoComponent implements OnInit {
+export class GenerarHistoriaClinicaComponent implements OnInit {
 
-  model!: NgbDateStruct;
+  dni!:number;
+  tieneEnfermedadH = 0;
+  esAlergeno = 0;
+
   persona:Persona =new Persona();
-  personalMedico:PersonalMedico =new PersonalMedico();
-
-  horarios:Horario[] | undefined;
-  roles:Rol[] | undefined;
+  paciente:Paciente =new Paciente();
 
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
-    this.persona.Sexo = "M";
-    this.personalMedico.Persona = this.persona;
-    this.cargarCombos();
+    this.paciente.Persona = this.persona;
   }
 
-  cargarCombos(){
-
-    combineLatest([
-     this.api.obtenerHorarios(),
-     this.api.obtenerRoles()
-    ]).subscribe(([res1,res2])=>{
-      this.horarios = res1.res;
-      this.roles = res2.res;
-      this.personalMedico.Horario_idHorario = 0;
-      this.personalMedico.Rol_idRol = 0;
+  buscarDni(){
+    this.api.obtenerPersona(this.dni).subscribe(r=>{
+      if(r.res.length>0){
+        this.paciente.Persona = r.res[0];
+      }
     });
-
   }
-
   registrar(forma:NgForm){
-   
+    
     Swal.fire({
       title: 'Confirmación',
-      text:'Esta seguro de registrar el personal médico?',
+      text:'Esta seguro de registrar la historia clinica?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: `Registrar`,
@@ -59,20 +46,17 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.persona.Fecha_Nacimiento = new Date(this.model.year,this.model.month-1,this.model.day);
-        let timeDiff = Math.abs(Date.now() - this.persona.Fecha_Nacimiento.getTime());
-        this.persona.Edad = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
-    
+        
         Swal.fire({
           allowOutsideClick:false,
           icon: 'info',
-          title:'Registrando personal médico',
+          title:'Registrando historia clinica',
           text:'Cargando...',
         });
     
         Swal.showLoading();
 
-        this.api.registrarPersonalMedico(this.personalMedico).subscribe(r=>{
+        this.api.registrarHistoriaClinica(this.paciente).subscribe(r=>{
           if(r.status == "success"){
             Swal.fire({
               allowOutsideClick:false,
@@ -80,7 +64,7 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
               title:'Éxito',
               text:'Se ha registrado correctamente!',
             }).then((result) => {
-              this.personalMedico= new PersonalMedico();
+              this.paciente= new Paciente();
               window.location.reload();
             });
           }else{
@@ -107,10 +91,11 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
             text:err.message,
           });
         });
-      } else if (result.isDenied) {
-      }
+        
+      } else if (result.isDenied) {}
     });
 
 
   }
+
 }

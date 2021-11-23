@@ -8,6 +8,8 @@ import { ResultInsert } from '../models/result.model';
 import { ResultHorarios } from '../models/horario.model';
 import { ResultRoles } from '../models/roles.model';
 import { Paciente } from '../models/paciente.model';
+import { Persona } from '../models/persona.model';
+import { CitaMedica } from '../models/cita-medica.model';
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +71,18 @@ export class ApiService {
   // Pacientes
   registrarPaciente(paciente:Paciente){
     return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes`,paciente);
+  }
+  obtenerPersona(dni:number){
+    return this.http.get<any>(`${this.BASE_URL}pacientes/${dni}`);
+  }
+  registrarHistoriaClinica(paciente:Paciente){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/historia-clinica`,paciente);
+  }
+  //Cita Medica
+  obtenerMedicos(){
+    return this.http.get<any>(`${this.BASE_URL}medicos`);
+  }
+  registrarCitaMedica(citamedica: CitaMedica){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}citas-medicas`,citamedica);
   }
 }

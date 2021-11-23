@@ -1,55 +1,43 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { combineLatest } from 'rxjs';
-import { Horario } from 'src/app/models/horario.model';
+import { CitaMedica } from 'src/app/models/cita-medica.model';
+import { Medico } from 'src/app/models/medico.model';
+import { Paciente } from 'src/app/models/paciente.model';
 import { Persona } from 'src/app/models/persona.model';
-import { PersonalMedico } from 'src/app/models/personal-medico';
-import { Rol } from 'src/app/models/roles.model';
 import { ApiService } from 'src/app/services/api.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registrar-personal-medico',
-  templateUrl: './registrar-personal-medico.component.html',
-  styleUrls: ['./registrar-personal-medico.component.css']
+  selector: 'app-registrar-cita-medica',
+  templateUrl: './registrar-cita-medica.component.html',
+  styleUrls: ['./registrar-cita-medica.component.css']
 })
-export class RegistrarPersonalMedicoComponent implements OnInit {
-
+export class RegistrarCitaMedicaComponent implements OnInit {
   model!: NgbDateStruct;
-  persona:Persona =new Persona();
-  personalMedico:PersonalMedico =new PersonalMedico();
-
-  horarios:Horario[] | undefined;
-  roles:Rol[] | undefined;
-
+  dni!:number;
   constructor(private api:ApiService) { }
 
+  persona:Persona =new Persona();
+  paciente:Paciente =new Paciente();
+  citamedica:CitaMedica = new CitaMedica();
+
   ngOnInit(): void {
-    this.persona.Sexo = "M";
-    this.personalMedico.Persona = this.persona;
-    this.cargarCombos();
+    this.paciente.Persona = this.persona;
+    this.citamedica.Hora='0';
   }
 
-  cargarCombos(){
-
-    combineLatest([
-     this.api.obtenerHorarios(),
-     this.api.obtenerRoles()
-    ]).subscribe(([res1,res2])=>{
-      this.horarios = res1.res;
-      this.roles = res2.res;
-      this.personalMedico.Horario_idHorario = 0;
-      this.personalMedico.Rol_idRol = 0;
+  buscarDni(){
+    this.api.obtenerPersona(this.dni).subscribe(r=>{
+      if(r.res.length>0){
+        this.paciente.Persona = r.res[0];
+      }
     });
-
   }
-
   registrar(forma:NgForm){
-   
     Swal.fire({
       title: 'Confirmación',
-      text:'Esta seguro de registrar el personal médico?',
+      text:'Esta seguro de registrar la cita médica?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: `Registrar`,
@@ -59,20 +47,18 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.persona.Fecha_Nacimiento = new Date(this.model.year,this.model.month-1,this.model.day);
-        let timeDiff = Math.abs(Date.now() - this.persona.Fecha_Nacimiento.getTime());
-        this.persona.Edad = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
-    
+        this.citamedica.Fecha = new Date(this.model.year,this.model.month-1,this.model.day);
+        this.citamedica.Paciente_Persona_idPersona = this.paciente.Persona.idPersona;
         Swal.fire({
           allowOutsideClick:false,
           icon: 'info',
-          title:'Registrando personal médico',
+          title:'Registrando cita médica',
           text:'Cargando...',
         });
     
         Swal.showLoading();
 
-        this.api.registrarPersonalMedico(this.personalMedico).subscribe(r=>{
+        this.api.registrarCitaMedica(this.citamedica).subscribe(r=>{
           if(r.status == "success"){
             Swal.fire({
               allowOutsideClick:false,
@@ -80,7 +66,7 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
               title:'Éxito',
               text:'Se ha registrado correctamente!',
             }).then((result) => {
-              this.personalMedico= new PersonalMedico();
+              this.citamedica= new CitaMedica();
               window.location.reload();
             });
           }else{
@@ -110,7 +96,7 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
       } else if (result.isDenied) {
       }
     });
-
-
   }
+  
+
 }

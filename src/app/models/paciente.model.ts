@@ -8,9 +8,10 @@ export class Paciente{
     Estatura!:number;
     Saturacion!:number;
     Pulso!:number;
-
+    
     Alergeno!:string;
     Enfermedad!:string;
     Sintomas!:string;
+
 
 }

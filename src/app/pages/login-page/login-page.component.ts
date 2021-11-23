@@ -36,7 +36,7 @@ export class LoginPageComponent implements OnInit {
     this.api.login(this.user).subscribe(r=>{
       if(r.status == 'success' ){
         Swal.close();
-        this.router.navigate(['inicio/reg-personal-medico']);
+        this.router.navigate(['inicio']);
       }else if(r.status == 'error'){
         Swal.fire({
           allowOutsideClick:false,

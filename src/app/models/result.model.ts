@@ -5,4 +5,5 @@ export interface ResultInsert{
 }
 export interface Id{
     id:number;
+    filasAfectadas:number;
 }

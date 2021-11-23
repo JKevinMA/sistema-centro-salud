@@ -4,12 +4,16 @@ import { RegistrarPersonalMedicoComponent } from './registrar-personal-medico/re
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RegistrarPacienteComponent } from './registrar-paciente/registrar-paciente.component';
+import { GenerarHistoriaClinicaComponent } from './generar-historia-clinica/generar-historia-clinica.component';
+import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-cita-medica.component';
 
 
 @NgModule({
   declarations: [
     RegistrarPersonalMedicoComponent,
-    RegistrarPacienteComponent
+    RegistrarPacienteComponent,
+    GenerarHistoriaClinicaComponent,
+    RegistrarCitaMedicaComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +22,9 @@ import { RegistrarPacienteComponent } from './registrar-paciente/registrar-pacie
   ],
   exports:[
     RegistrarPersonalMedicoComponent,
-    RegistrarPacienteComponent
+    RegistrarPacienteComponent,
+    GenerarHistoriaClinicaComponent,
+    RegistrarCitaMedicaComponent
   ]
 })
 export class ModulesModule { }
