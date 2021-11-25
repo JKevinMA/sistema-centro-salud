@@ -7,6 +7,7 @@ export interface ResultLogin {
 export interface User {
     Nombre: string;
     Rol:    string;
+    Persona_idPersona:number;
 }
 
 export interface Login{

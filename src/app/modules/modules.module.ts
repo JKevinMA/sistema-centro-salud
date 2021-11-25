@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RegistrarPacienteComponent } from './registrar-paciente/registrar-paciente.component';
 import { GenerarHistoriaClinicaComponent } from './generar-historia-clinica/generar-historia-clinica.component';
 import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-cita-medica.component';
+import { RegistrarAtencionMedicaComponent } from './registrar-atencion-medica/registrar-atencion-medica.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-
     RegistrarPersonalMedicoComponent,
     RegistrarPacienteComponent,
     GenerarHistoriaClinicaComponent,
-    RegistrarCitaMedicaComponent
+    RegistrarCitaMedicaComponent,
+    RegistrarAtencionMedicaComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-
     RegistrarPersonalMedicoComponent,
     RegistrarPacienteComponent,
     GenerarHistoriaClinicaComponent,
-    RegistrarCitaMedicaComponent
+    RegistrarCitaMedicaComponent,
+    RegistrarAtencionMedicaComponent
   ]
 })
 export class ModulesModule { }

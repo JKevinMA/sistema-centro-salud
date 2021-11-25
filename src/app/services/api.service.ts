@@ -10,6 +10,7 @@ import { ResultRoles } from '../models/roles.model';
 import { Paciente } from '../models/paciente.model';
 import { Persona } from '../models/persona.model';
 import { CitaMedica } from '../models/cita-medica.model';
+import { AtencionMedica } from '../models/atencion-medica.model';
 
 @Injectable({
   providedIn: 'root'
@@ -84,5 +85,12 @@ export class ApiService {
   }
   registrarCitaMedica(citamedica: CitaMedica){
     return this.http.post<ResultInsert>(`${this.BASE_URL}citas-medicas`,citamedica);
+  }
+  //Atencion Medica
+  registrarAtencionMedica(paciente:Paciente){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/atencion-medica`,paciente);
+  }
+  registrarAtencionMedica_2(atencionMedica:AtencionMedica){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/atencion-medica-2`,atencionMedica);
   }
 }

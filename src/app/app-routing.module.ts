@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { GenerarHistoriaClinicaComponent } from './modules/generar-historia-clinica/generar-historia-clinica.component';
+import { RegistrarAtencionMedicaComponent } from './modules/registrar-atencion-medica/registrar-atencion-medica.component';
 import { RegistrarCitaMedicaComponent } from './modules/registrar-cita-medica/registrar-cita-medica.component';
 import { RegistrarPacienteComponent } from './modules/registrar-paciente/registrar-paciente.component';
 import { RegistrarPersonalMedicoComponent } from './modules/registrar-personal-medico/registrar-personal-medico.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path:'reg-cita-medica',
         component: RegistrarCitaMedicaComponent
+      },
+      {
+        path:'reg-atencion-medica',
+        component: RegistrarAtencionMedicaComponent
       },
     ],
     canActivate:[AuthGuard]

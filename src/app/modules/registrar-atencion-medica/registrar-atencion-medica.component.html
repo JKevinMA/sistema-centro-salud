@@ -1,0 +1,277 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Registrar Atención Médica</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a>Atención Médica</a></li>
+                    <li class="breadcrumb-item active">Registrar Atención Médica</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Buscar Paciente</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputSearchDNI" class="col-sm-3 col-form-label text-right">DNI</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="dni" name="inputSearchDNI" type="number"
+                                            class="form-control" id="inputSearchDNI"
+                                            placeholder="Ingrese N° DNI a buscar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button (click)="buscarDni()" class="btn btn-warning"> Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Detalle de Historia Clinica </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputNombre" class="col-sm-3 col-form-label text-right">Nombre</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Nombre" readonly name="Nombre" type="text"
+                                            class="form-control" id="inputNombre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputDNI" class="col-sm-3 col-form-label text-right">DNI</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.DNI" readonly name="DNI" type="number"
+                                            class="form-control" id="inputDNI">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputApellido_Paterno"
+                                        class="col-sm-3 col-form-label text-right">Apellido Paterno</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Apellido_Paterno" readonly
+                                            name="Apellido_Paterno" type="text" class="form-control"
+                                            id="inputApellido_Paterno">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputApellido_Materno"
+                                        class="col-sm-3 col-form-label text-right">Apellido Materno</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Apellido_Materno" readonly
+                                            name="Apellido_Materno" type="text" class="form-control"
+                                            id="inputApellido_Materno">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEdad" class="col-sm-3 col-form-label text-right">Edad</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Edad" readonly name="Edad" type="text"
+                                            class="form-control" id="inputEdad">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputSexo" class="col-sm-3 col-form-label text-right">Sexo</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Persona.Sexo" readonly name="Sexo" type="text"
+                                            class="form-control" id="inputSexo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputPeso"
+                                        class="col-sm-3 col-form-label text-right">Peso</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Peso" readonly
+                                            name="Peso" type="text" class="form-control"
+                                            id="inputPeso">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEstatura"
+                                        class="col-sm-3 col-form-label text-right">Estatura</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Estatura" readonly
+                                            name="Estatura" type="text" class="form-control"
+                                            id="inputEstatura">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputSaturacion"
+                                        class="col-sm-3 col-form-label text-right">Saturacion</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Saturacion" readonly
+                                            name="Saturacion" type="text" class="form-control"
+                                            id="inputSaturacion">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputPulso"
+                                        class="col-sm-3 col-form-label text-right">Pulso</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Pulso" readonly
+                                            name="Pulso" type="text" class="form-control"
+                                            id="inputPulso">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputAlergeno"
+                                        class="col-sm-3 col-form-label text-right">Alergeno</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Alergeno" readonly
+                                            name="Alergeno" type="text" class="form-control"
+                                            id="inputAlergeno">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEnfermedad"
+                                        class="col-sm-3 col-form-label text-right">Enfermedad</label>
+                                    <div class="col-sm-9">
+                                        <input [(ngModel)]="paciente.Enfermedad" readonly
+                                            name="Enfermedad" type="text" class="form-control"
+                                            id="inputEnfermedad">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form autocomplete="off" id="formularioRegAtencionMedica" (ngSubmit)="registrar(forma)" #forma="ngForm">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Atención Médica</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="selectTosPersistente" class="col-sm-3 col-form-label text-right">Tos Persistente</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="paciente.TosPersistente" name="TosPersistente" id="selectTosPersistente"
+                                                class="custom-select">
+                                                <option value="0">No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="selectPresionPecho" class="col-sm-3 col-form-label text-right">Presion en el Pecho</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="paciente.PresionPecho" name="PresionPecho" id="selectPresionPecho"
+                                                class="custom-select">
+                                                <option value="0">No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="selectDificultadRespirar" class="col-sm-3 col-form-label text-right">Dificultad para Respirar</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="paciente.DificultadRespirar" name="DificultadRespirar" id="selectDificultadRespirar"
+                                                class="custom-select">
+                                                <option value="0">No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="selectSilbidoPecho" class="col-sm-3 col-form-label text-right">Silbido en el Pecho</label>
+                                        <div class="col-sm-9">
+                                            <select [(ngModel)]="paciente.SilbidoPecho" name="SilbidoPecho" id="selectSilbidoPecho"
+                                                class="custom-select">
+                                                <option value="0">No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputObservaciones" class="col-sm-3 col-form-label text-right">Observaciones</label>
+                                        <div class="col-sm-9">
+                                            <textarea [(ngModel)]="atencionMedica.Observaciones" name="Observaciones" type="text"
+                                                class="form-control" id="inputObservaciones" placeholder="Ingrese si presenta observaciones"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-success btn-block">Registrar</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger btn-block">Salir</button>
+                        </div>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

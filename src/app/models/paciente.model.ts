@@ -1,7 +1,7 @@
 import { Persona } from "./persona.model";
 
 export class Paciente{
-    
+    Persona_idPersona!:number;
     Persona!:Persona;
     
     Peso!:number;
@@ -11,7 +11,9 @@ export class Paciente{
     
     Alergeno!:string;
     Enfermedad!:string;
-    Sintomas!:string;
 
-
+    TosPersistente!:number;
+    PresionPecho!:number;
+    DificultadRespirar!:number;
+    SilbidoPecho!:number;
 }
