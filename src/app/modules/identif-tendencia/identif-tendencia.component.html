@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Registrar Atención Médica</h1>
+                <h1 class="m-0">Identificación de Tendencia</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a>Atención Médica</a></li>
-                    <li class="breadcrumb-item active">Registrar Atención Médica</li>
+                    <li class="breadcrumb-item active">Identificación de Tendencia</li>
                 </ol>
             </div>
         </div>
@@ -15,7 +15,7 @@
 </section>
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row doNotPrint">
             <div class="col-md-12">
                 <div class="card card-info">
                     <div class="card-header">
@@ -28,7 +28,7 @@
                                     <label for="inputSearchDNI" class="col-sm-3 col-form-label text-right">DNI</label>
                                     <div class="col-sm-9">
                                         <input [(ngModel)]="dni" name="inputSearchDNI" type="number"
-                                            class="form-control" id="inputSearchDNI"
+                                            class="form-control" id="inputSearchDNI" min="0"
                                             placeholder="Ingrese N° DNI a buscar">
                                     </div>
                                 </div>
@@ -41,17 +41,17 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row doNotPrint">
             <div class="col-md-12">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Detalle de Historia Clinica </h3>
+                        <h3 class="card-title">Detalle de Paciente </h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="inputNombre" class="col-sm-3 col-form-label text-right">Nombre</label>
+                                    <label for="inputNombre" class="col-sm-3 col-form-label text-right">Nombres</label>
                                     <div class="col-sm-9">
                                         <input [(ngModel)]="paciente.Persona.Nombre" readonly name="Nombre" type="text"
                                             class="form-control" id="inputNombre">
@@ -115,12 +115,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="inputPeso"
-                                        class="col-sm-3 col-form-label text-right">Peso</label>
+                                    <label for="inputPeso" class="col-sm-3 col-form-label text-right">Peso</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Peso" readonly
-                                            name="Peso" type="text" class="form-control"
-                                            id="inputPeso">
+                                        <input [(ngModel)]="paciente.Peso" readonly name="Peso" type="text"
+                                            class="form-control" id="inputPeso">
                                     </div>
                                 </div>
                             </div>
@@ -129,9 +127,8 @@
                                     <label for="inputEstatura"
                                         class="col-sm-3 col-form-label text-right">Estatura</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Estatura" readonly
-                                            name="Estatura" type="text" class="form-control"
-                                            id="inputEstatura">
+                                        <input [(ngModel)]="paciente.Estatura" readonly name="Estatura" type="text"
+                                            class="form-control" id="inputEstatura">
                                     </div>
                                 </div>
                             </div>
@@ -142,20 +139,17 @@
                                     <label for="inputSaturacion"
                                         class="col-sm-3 col-form-label text-right">Saturacion</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Saturacion" readonly
-                                            name="Saturacion" type="text" class="form-control"
-                                            id="inputSaturacion">
+                                        <input [(ngModel)]="paciente.Saturacion" readonly name="Saturacion" type="text"
+                                            class="form-control" id="inputSaturacion">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="inputPulso"
-                                        class="col-sm-3 col-form-label text-right">Pulso</label>
+                                    <label for="inputPulso" class="col-sm-3 col-form-label text-right">Pulso</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Pulso" readonly
-                                            name="Pulso" type="text" class="form-control"
-                                            id="inputPulso">
+                                        <input [(ngModel)]="paciente.Pulso" readonly name="Pulso" type="text"
+                                            class="form-control" id="inputPulso">
                                     </div>
                                 </div>
                             </div>
@@ -166,9 +160,8 @@
                                     <label for="inputAlergeno"
                                         class="col-sm-3 col-form-label text-right">Alergeno</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Alergeno" readonly
-                                            name="Alergeno" type="text" class="form-control"
-                                            id="inputAlergeno">
+                                        <input [(ngModel)]="paciente.Alergeno" readonly name="Alergeno" type="text"
+                                            class="form-control" id="inputAlergeno">
                                     </div>
                                 </div>
                             </div>
@@ -177,9 +170,8 @@
                                     <label for="inputEnfermedad"
                                         class="col-sm-3 col-form-label text-right">Enfermedad</label>
                                     <div class="col-sm-9">
-                                        <input [(ngModel)]="paciente.Enfermedad" readonly
-                                            name="Enfermedad" type="text" class="form-control"
-                                            id="inputEnfermedad">
+                                        <input [(ngModel)]="paciente.Enfermedad" readonly name="Enfermedad" type="text"
+                                            class="form-control" id="inputEnfermedad">
                                     </div>
                                 </div>
                             </div>
@@ -188,41 +180,148 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row doNotPrint">
             <div class="col-md-12">
-                <form autocomplete="off" id="formularioRegAtencionMedica" (ngSubmit)="registrar(forma)" #forma="ngForm">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Atención Médica</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="selectTosPersistente" class="col-sm-3 col-form-label text-right">Tos Persistente</label>
-                                        <div class="col-sm-9">
-                                            <select [(ngModel)]="paciente.TosPersistente" name="TosPersistente" id="selectTosPersistente"
-                                                class="custom-select">
-                                                <option value="0">No</option>
-                                                <option value="1">Sí</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="selectPresionPecho" class="col-sm-3 col-form-label text-right">Presion en el Pecho</label>
-                                        <div class="col-sm-9">
-                                            <select [(ngModel)]="paciente.PresionPecho" name="PresionPecho" id="selectPresionPecho"
-                                                class="custom-select">
-                                                <option value="0">No</option>
-                                                <option value="1">Sí</option>
-                                            </select>
-                                        </div>
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Detalle de Atención Médica</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="selectTosPersistente" class="col-sm-3 col-form-label text-right">Tos
+                                        Persistente</label>
+                                    <div class="col-sm-9">
+                                        <select [(ngModel)]="paciente.TosPersistente" name="TosPersistente" disabled
+                                            id="selectTosPersistente" class="custom-select">
+                                            <option value="0">No</option>
+                                            <option value="1">Sí</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="selectPresionPecho" class="col-sm-3 col-form-label text-right">Presion
+                                        en el Pecho</label>
+                                    <div class="col-sm-9">
+                                        <select [(ngModel)]="paciente.PresionPecho" name="PresionPecho" disabled
+                                            id="selectPresionPecho" class="custom-select">
+                                            <option value="0">No</option>
+                                            <option value="1">Sí</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="selectDificultadRespirar"
+                                        class="col-sm-3 col-form-label text-right">Dificultad para Respirar</label>
+                                    <div class="col-sm-9">
+                                        <select [(ngModel)]="paciente.DificultadRespirar" name="DificultadRespirar"
+                                            disabled id="selectDificultadRespirar" class="custom-select">
+                                            <option value="0">No</option>
+                                            <option value="1">Sí</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="selectSilbidoPecho" class="col-sm-3 col-form-label text-right">Silbido
+                                        en el Pecho</label>
+                                    <div class="col-sm-9">
+                                        <select [(ngModel)]="paciente.SilbidoPecho" name="SilbidoPecho" disabled
+                                            id="selectSilbidoPecho" class="custom-select">
+                                            <option value="0">No</option>
+                                            <option value="1">Sí</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="button" (click)="predecir()" class="btn btn-success ">Predecir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form autocomplete="off" id="formularioRegTendencia" (ngSubmit)="registrar(forma)" #forma="ngForm">
+                    <div class="card card-success" id="res">
+                        <div class="card-header">
+                            <h3 class="card-title">Resultado</h3>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
+                                <div class="col-md-4">
+                                    <!-- <div class="form-group row">
+                                        <label for="inputPresicion"
+                                            class="col-sm-3 col-form-label text-right">Precision</label>
+                                        <div class="col-sm-9">
+                                            <input [value]="precision + ' %'" name="Precision" type="text"
+                                                class="form-control" id="inputPresicion" placeholder="Precision"
+                                                readonly>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group row ">
+                                        <label for="inputIPA" class="col-sm-3 col-form-label">IPA</label>
+                                        <div class="col-sm-9">
+                                            <input [(ngModel)]="IPA" name="IPA" type="text" class="form-control"
+                                                id="inputIPA" placeholder="IPA" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ">
+                                        <label for="inputPaciente" class="col-sm-3 col-form-label">Nombres</label>
+                                        <div class="col-sm-9">
+                                            <input name="nomPaciente" type="text" class="form-control"
+                                                id="inputIPA" [value]="paciente.Persona.Nombre?paciente.Persona.Nombre:'-'" placeholder="IPA" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="text-center doNotPrint">
+                                        <button class="btn btn-primary" type="button"
+                                            (click)="imprimir()">Imprimir</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <div class="chart" style="display: block">
+                                                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels"
+                                                    [chartType]="pieChartType" [options]="pieChartOptions"
+                                                    [colors]="pieChartColors" [legend]="pieChartLegend">
+                                                </canvas>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Variable</th>
+                                                        <th>Valor</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let resultado of resultados">
+                                                        <td>{{resultado.variable}}</td>
+                                                        <td>{{resultado.valor==1?'Alto':'Bajo'}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label for="selectDificultadRespirar" class="col-sm-3 col-form-label text-right">Dificultad para Respirar</label>
@@ -258,10 +357,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between doNotPrint">
                         <div class="col-2">
                             <button type="submit" class="btn btn-success btn-block">Registrar</button>
                         </div>

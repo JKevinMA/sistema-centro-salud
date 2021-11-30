@@ -7,6 +7,8 @@ import { RegistrarPacienteComponent } from './registrar-paciente/registrar-pacie
 import { GenerarHistoriaClinicaComponent } from './generar-historia-clinica/generar-historia-clinica.component';
 import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-cita-medica.component';
 import { RegistrarAtencionMedicaComponent } from './registrar-atencion-medica/registrar-atencion-medica.component';
+import { IdentifTendenciaComponent } from './identif-tendencia/identif-tendencia.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -15,19 +17,22 @@ import { RegistrarAtencionMedicaComponent } from './registrar-atencion-medica/re
     RegistrarPacienteComponent,
     GenerarHistoriaClinicaComponent,
     RegistrarCitaMedicaComponent,
-    RegistrarAtencionMedicaComponent
+    RegistrarAtencionMedicaComponent,
+    IdentifTendenciaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     NgbModule,
+    ChartsModule
   ],
   exports:[
     RegistrarPersonalMedicoComponent,
     RegistrarPacienteComponent,
     GenerarHistoriaClinicaComponent,
     RegistrarCitaMedicaComponent,
-    RegistrarAtencionMedicaComponent
+    RegistrarAtencionMedicaComponent,
+    IdentifTendenciaComponent
   ]
 })
 export class ModulesModule { }
