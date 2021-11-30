@@ -82,67 +82,67 @@ export class IdentifTendenciaComponent implements OnInit {
     this.resultados=[];
     if(this.paciente.Enfermedad=='-'){
       this.contadorBajo++;
-      this.resultados[0]={variable:'Enfermedad Hereditaria',valor:0};
+      this.resultados.push({variable:'Enfermedad Hereditaria',valor:0});
     }else{
       this.contadorAlto++;
-      this.resultados[0]={variable:'Enfermedad Hereditaria',valor:1};
+      this.resultados.push({variable:'Enfermedad Hereditaria',valor:1});
     }
     
     if(this.paciente.Saturacion>95){
       this.contadorBajo++;
-      this.resultados[1]={variable:'Saturacion',valor:0};
+      this.resultados.push({variable:'Saturacion',valor:0});
     }else{
       this.contadorAlto++;
-      this.resultados[1]={variable:'Saturacion',valor:1};
+      this.resultados.push({variable:'Saturacion',valor:1});
     }
 
     var IMC =this.paciente.Peso / (this.paciente.Estatura*this.paciente.Estatura);
     if(IMC>=25 && IMC<=35){
       this.contadorAlto++;
-      this.resultados[2]={variable:'IMC',valor:1};
+      this.resultados.push({variable:'IMC',valor:1});
     }else if(IMC>=18.5 && IMC<=24.9){
       this.contadorBajo++;
-      this.resultados[2]={variable:'IMC',valor:0};
+      this.resultados.push({variable:'IMC',valor:0});
     }
 
     if(this.paciente.Alergeno=='-'){
       this.contadorBajo++;
-      this.resultados[3]={variable:'Alérgeno',valor:0};
+      this.resultados.push({variable:'Alérgeno',valor:0});
     }else{
       this.contadorAlto++;
-      this.resultados[3]={variable:'Alérgeno',valor:1};
+      this.resultados.push({variable:'Alérgeno',valor:1});
     }
 
     if(this.paciente.TosPersistente){
       this.contadorAlto++;
-      this.resultados[4]={variable:'Tos Persistente',valor:1};
+      this.resultados.push({variable:'Tos Persistente',valor:1});
     }else{
       this.contadorBajo++;
-      this.resultados[4]={variable:'Tos Persistente',valor:0};
+      this.resultados.push({variable:'Tos Persistente',valor:0});
     }
 
     if(this.paciente.PresionPecho){
       this.contadorAlto++;
-      this.resultados[5]={variable:'Presion en el pecho',valor:1};
+      this.resultados.push({variable:'Presion en el pecho',valor:1});
     }else{
       this.contadorBajo++;
-      this.resultados[5]={variable:'Presion en el pecho',valor:0};
+      this.resultados.push({variable:'Presion en el pecho',valor:0});
     }
 
     if(this.paciente.SilbidoPecho){
       this.contadorAlto++;
-      this.resultados[6]={variable:'Silbido en el pecho',valor:1};
+      this.resultados.push({variable:'Silbido en el pecho',valor:1});
     }else{
       this.contadorBajo++;
-      this.resultados[6]={variable:'Silbido en el pecho',valor:0};
+      this.resultados.push({variable:'Silbido en el pecho',valor:0});
     }
 
     if(this.paciente.DificultadRespirar){
       this.contadorAlto++;
-      this.resultados[7]={variable:'Dificultad para respirar',valor:1};;
+      this.resultados.push({variable:'Dificultad para respirar',valor:1});
     }else{
       this.contadorBajo++;
-      this.resultados[7]={variable:'Dificultad para respirar',valor:0};;
+      this.resultados.push({variable:'Dificultad para respirar',valor:0});
     }
 
     var probAlto = (this.contadorAlto/(this.contadorAlto + this.contadorBajo)*100);
