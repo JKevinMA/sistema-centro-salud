@@ -279,10 +279,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row ">
-                                        <label for="inputPaciente" class="col-sm-3 col-form-label">Nombres</label>
+                                        <label for="inputPaciente" class="col-sm-3 col-form-label">Paciente</label>
                                         <div class="col-sm-9">
                                             <input name="nomPaciente" type="text" class="form-control"
                                                 id="inputIPA" [value]="paciente.Persona.Nombre?paciente.Persona.Nombre:'-'" placeholder="IPA" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ">
+                                        <label class="col-sm-3 col-form-label">Medico</label>
+                                        <div class="col-sm-9">
+                                            <input  type="text" class="form-control"
+                                                 [value]="user!.Nombre" readonly>
                                         </div>
                                     </div>
                                     <div class="text-center doNotPrint">
@@ -365,7 +372,7 @@
                             <button type="submit" class="btn btn-success btn-block">Registrar</button>
                         </div>
                         <div class="col-2">
-                            <button type="button" class="btn btn-danger btn-block">Salir</button>
+                            <button type="button" class="btn btn-danger btn-block" (click)="salir()">Salir</button>
                         </div>
                     </div>
                     <br><br>

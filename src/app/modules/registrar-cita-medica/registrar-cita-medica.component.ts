@@ -31,6 +31,13 @@ export class RegistrarCitaMedicaComponent implements OnInit {
     this.api.obtenerPersona(this.dni).subscribe(r=>{
       if(r.res.length>0){
         this.paciente.Persona = r.res[0];
+      }else{
+        Swal.fire({
+          title: 'Info',
+          text:'No existe paciente, ingrese otro valor ',
+          allowOutsideClick:true,
+          icon:'info'
+        });
       }
     });
   }
@@ -98,5 +105,22 @@ export class RegistrarCitaMedicaComponent implements OnInit {
     });
   }
   
+  salir(){
+    Swal.fire({
+      title: 'Salir',
+      text:'Si sale, se perderán los datos',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Salir`,
+      denyButtonText: `Cancelar`,
+      allowOutsideClick:false,
+      icon:'info'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      } else if (result.isDenied) {
+      }
+    });
+  }
 
 }

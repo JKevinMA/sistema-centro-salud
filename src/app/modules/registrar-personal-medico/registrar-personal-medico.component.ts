@@ -113,4 +113,22 @@ export class RegistrarPersonalMedicoComponent implements OnInit {
 
 
   }
+  salir(){
+    Swal.fire({
+      title: 'Salir',
+      text:'Si sale, se perderán los datos',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Salir`,
+      denyButtonText: `Cancelar`,
+      allowOutsideClick:false,
+      icon:'info'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      } else if (result.isDenied) {
+      }
+    });
+  }
+
 }

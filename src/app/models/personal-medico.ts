@@ -12,5 +12,6 @@ export class PersonalMedico{
 
     Horario_idHorario!:number;
     Rol_idRol!:number;
+    Rol!:string;
     
 }

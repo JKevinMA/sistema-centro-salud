@@ -1,0 +1,64 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Reporte de Personal Medico</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a>Pacientes</a></li>
+                    <li class="breadcrumb-item active">Reporte de Personal Medico</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Personal Medico</h3>
+                    </div>
+                    <div class="card-body p-0 table-responsive">
+                        <table class="table"> 
+                            <thead class="thead-light">
+                                <tr >
+                                    <th>Id</th>
+                                    <th>DNI</th>
+                                    <th>Nombres</th>
+                                    <th>Ap Paterno</th>
+                                    <th>Ap Materno</th>
+                                    <th>Sexo</th>
+                                    <th>Edad</th>
+                                    <th>Celular</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pm of personalmedico">
+                                    <td>{{pm.Persona.idPersona}}</td>
+                                    <td>{{pm.Persona.DNI}}</td>
+                                    <td>{{pm.Persona.Nombre}}</td>
+                                    <td>{{pm.Persona.Apellido_Paterno}}</td>
+                                    <td>{{pm.Persona.Apellido_Materno}}</td>
+                                    <td>{{pm.Persona.Sexo}}</td>
+                                    <td>{{pm.Persona.Edad}}</td>
+                                    <td>{{pm.Persona.Celular}}</td>
+                                    <td>{{pm.Correo}}</td>
+                                    <td>{{pm.Rol}}</td>
+                                    <td>{{pm.Usuario}}</td>
+                                    <td>{{pm.Contrasena}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

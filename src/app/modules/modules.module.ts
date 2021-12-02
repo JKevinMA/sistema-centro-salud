@@ -9,6 +9,11 @@ import { RegistrarCitaMedicaComponent } from './registrar-cita-medica/registrar-
 import { RegistrarAtencionMedicaComponent } from './registrar-atencion-medica/registrar-atencion-medica.component';
 import { IdentifTendenciaComponent } from './identif-tendencia/identif-tendencia.component';
 import { ChartsModule } from 'ng2-charts';
+import { ReportePersonalMedicoComponent } from './reporte-personal-medico/reporte-personal-medico.component';
+import { ReportePacienteComponent } from './reporte-paciente/reporte-paciente.component';
+import { ReporteHistoriaClinicaComponent } from './reporte-historia-clinica/reporte-historia-clinica.component';
+import { ReporteCitaMedicaComponent } from './reporte-cita-medica/reporte-cita-medica.component';
+import { ReporteAtencionMedicaComponent } from './reporte-atencion-medica/reporte-atencion-medica.component';
 
 
 @NgModule({
@@ -18,7 +23,12 @@ import { ChartsModule } from 'ng2-charts';
     GenerarHistoriaClinicaComponent,
     RegistrarCitaMedicaComponent,
     RegistrarAtencionMedicaComponent,
-    IdentifTendenciaComponent
+    IdentifTendenciaComponent,
+    ReportePersonalMedicoComponent,
+    ReportePacienteComponent,
+    ReporteHistoriaClinicaComponent,
+    ReporteCitaMedicaComponent,
+    ReporteAtencionMedicaComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +42,12 @@ import { ChartsModule } from 'ng2-charts';
     GenerarHistoriaClinicaComponent,
     RegistrarCitaMedicaComponent,
     RegistrarAtencionMedicaComponent,
-    IdentifTendenciaComponent
+    IdentifTendenciaComponent,
+    ReportePersonalMedicoComponent,
+    ReportePacienteComponent,
+    ReporteHistoriaClinicaComponent,
+    ReporteCitaMedicaComponent,
+    ReporteAtencionMedicaComponent
   ]
 })
 export class ModulesModule { }

@@ -68,6 +68,13 @@
                                     <p>Registrar Personal Médico</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active"
+                                    [routerLink]="['/inicio/reporte-personal-medico']">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de Personal Medico</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item" *ngIf="user!.Rol=='Enfermera'" >
@@ -93,6 +100,20 @@
                                     <p>Generar Historia Clínica</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active"
+                                    [routerLink]="['/inicio/reporte-paciente']">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de Pacientes</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active"
+                                    [routerLink]="['/inicio/reporte-historia-clinica']">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de Historia Clinica</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item" *ngIf="user!.Rol=='Recepcionista'">
@@ -109,6 +130,16 @@
                                     [routerLink]="['/inicio/reg-cita-medica']">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Registrar Cita Médica</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active"
+                                    [routerLink]="['/inicio/reporte-cita-medica']">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de Citas Médicas</p>
                                 </a>
                             </li>
                             
@@ -137,6 +168,14 @@
                                    >
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Identif. de Tendencias</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLinkActive="active"
+                                [routerLink]="['/inicio/reporte-atencion-medica']"
+                                   >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de At. Médicas</p>
                                 </a>
                             </li>
                         </ul>

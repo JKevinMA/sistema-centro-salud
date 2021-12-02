@@ -1,0 +1,58 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Reporte de Citas Medicas</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a>Pacientes</a></li>
+                    <li class="breadcrumb-item active">Reporte de Citas Medicas</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Citas Medicas</h3>
+                    </div>
+                    <div class="card-body p-0 table-responsive">
+                        <table class="table"> 
+                            <thead class="thead-light">
+                                <tr >
+                                    <th>Id</th>
+                                    <th>DNI</th>
+                                    <th>Nombres</th>
+                                    <th>Ap Paterno</th>
+                                    <th>Ap Materno</th>
+                                    <th>Sexo</th>
+                                    <th>Edad</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let cm of citasMedicas">
+                                    <td>{{cm.Persona.idPersona}}</td>
+                                    <td>{{cm.Persona.DNI}}</td>
+                                    <td>{{cm.Persona.Nombre}}</td>
+                                    <td>{{cm.Persona.Apellido_Paterno}}</td>
+                                    <td>{{cm.Persona.Apellido_Materno}}</td>
+                                    <td>{{cm.Persona.Sexo}}</td>
+                                    <td>{{cm.Persona.Edad}}</td>
+                                    <td>{{cm.Fecha |date:"mediumDate"}}</td>
+                                    <td>{{cm.Hora }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

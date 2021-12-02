@@ -11,6 +11,7 @@ import { Paciente } from '../models/paciente.model';
 import { Persona } from '../models/persona.model';
 import { CitaMedica } from '../models/cita-medica.model';
 import { AtencionMedica } from '../models/atencion-medica.model';
+import { Diagnostico } from '../models/diagnostico.model';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,9 @@ export class ApiService {
   obtenerRoles(){
     return this.http.get<ResultRoles>(`${this.BASE_URL}roles`);
   }
+  obtenerPersonalMedico(){
+    return this.http.get<any>(`${this.BASE_URL}personal-medico`);
+  }
   // Pacientes
   registrarPaciente(paciente:Paciente){
     return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes`,paciente);
@@ -79,6 +83,10 @@ export class ApiService {
   registrarHistoriaClinica(paciente:Paciente){
     return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/historia-clinica`,paciente);
   }
+  obtenerPacientes(){
+    return this.http.get<any>(`${this.BASE_URL}pacientes`);
+  }
+
   //Cita Medica
   obtenerMedicos(){
     return this.http.get<any>(`${this.BASE_URL}medicos`);
@@ -86,11 +94,19 @@ export class ApiService {
   registrarCitaMedica(citamedica: CitaMedica){
     return this.http.post<ResultInsert>(`${this.BASE_URL}citas-medicas`,citamedica);
   }
+  obtenerCitasMedicas(){
+    return this.http.get<any>(`${this.BASE_URL}citas-medicas`);
+  }
   //Atencion Medica
   registrarAtencionMedica(paciente:Paciente){
     return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/atencion-medica`,paciente);
   }
   registrarAtencionMedica_2(atencionMedica:AtencionMedica){
     return this.http.post<ResultInsert>(`${this.BASE_URL}pacientes/atencion-medica-2`,atencionMedica);
+  }
+
+  //identificacion
+  registrarDiagnostico(diagnostico:Diagnostico){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}diagnosticos`,diagnostico);
   }
 }

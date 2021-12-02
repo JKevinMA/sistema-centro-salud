@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { Diagnostico } from 'src/app/models/diagnostico.model';
 import { User } from 'src/app/models/login.model';
 import { Paciente } from 'src/app/models/paciente.model';
 import { Persona } from 'src/app/models/persona.model';
@@ -155,7 +156,7 @@ export class IdentifTendenciaComponent implements OnInit {
       this.IPA = 'No';
       console.log();
     }else if(probAlto>probBajo){
-      this.IPA = 'Sí';
+      this.IPA = 'Si';
       console.log();
     }
 
@@ -170,9 +171,9 @@ export class IdentifTendenciaComponent implements OnInit {
   }
 
   registrar(forma:NgForm){
-    /* Swal.fire({
+    Swal.fire({
       title: 'Confirmación',
-      text:'Esta seguro de registrar la atención médica?',
+      text:'Esta seguro de registrar la Identificación?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: `Registrar`,
@@ -184,51 +185,31 @@ export class IdentifTendenciaComponent implements OnInit {
         Swal.fire({
           allowOutsideClick:false,
           icon: 'info',
-          title:'Registrando atención médica',
+          title:'Registrando identificación de tendencia',
           text:'Cargando...',
         });
     
         Swal.showLoading();
 
-        this.api.registrarAtencionMedica(this.paciente).subscribe(r=>{
+
+
+        var diag = new Diagnostico();
+        diag.Indice_Predictivo = this.IPA;
+        diag.Medico_idPersona = this.user!.Persona_idPersona;
+        diag.Paciente_idPersona = this.paciente.Persona.idPersona;
+
+        this.api.registrarDiagnostico(diag).subscribe(r=>{
           if(r.status == "success"){
-            this.atencionMedica.Fecha = new Date();
-            this.atencionMedica.idPaciente = this.paciente.Persona.idPersona;
-            this.api.registrarAtencionMedica_2(this.atencionMedica).subscribe(r=>{
-              if(r.status == "success"){
-                Swal.fire({
-                  allowOutsideClick:false,
-                  icon: 'success',
-                  title:'Éxito',
-                  text:'Se ha registrado correctamente!',
-                }).then((result) => {
-                  this.paciente= new Paciente();
-                  window.location.reload();
-                });
-              }else{
-                Swal.fire({
-                  title:'Error',
-                  text: r.message,
-                  icon:'error'
-                });
-              }
-            },err=>{
-              if(err.name=="HttpErrorResponse"){
-                Swal.fire({
-                  allowOutsideClick:false,
-                  icon: 'error',
-                  title:'Error al conectar',
-                  text:'Error de comunicación con el servidor',
-                });
-                return;
-              }
-              Swal.fire({
-                allowOutsideClick:false,
-                icon: 'error',
-                title:err.name,
-                text:err.message,
-              });
+            
+            Swal.fire({
+              allowOutsideClick:false,
+              icon: 'success',
+              title:'Éxito',
+              text:'Se ha registrado correctamente!',
+            }).then((result) => {
+              window.location.reload();
             });
+
           }else{
             Swal.fire({
               title:'Error',
@@ -255,7 +236,7 @@ export class IdentifTendenciaComponent implements OnInit {
         });
       } else if (result.isDenied) {
       }
-    }); */
+    });
   }
 
   parsearPaciente(r:any){
@@ -284,6 +265,24 @@ export class IdentifTendenciaComponent implements OnInit {
 
   imprimir(){
     window.print();
+  }
+
+  salir(){
+    Swal.fire({
+      title: 'Salir',
+      text:'Si sale, se perderán los datos',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Salir`,
+      denyButtonText: `Cancelar`,
+      allowOutsideClick:false,
+      icon:'info'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      } else if (result.isDenied) {
+      }
+    });
   }
 
 }
