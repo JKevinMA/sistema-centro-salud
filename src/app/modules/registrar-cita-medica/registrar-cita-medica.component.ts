@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { CitaMedica } from 'src/app/models/cita-medica.model';
+import { User } from 'src/app/models/login.model';
 import { Medico } from 'src/app/models/medico.model';
 import { Paciente } from 'src/app/models/paciente.model';
 import { Persona } from 'src/app/models/persona.model';
@@ -22,9 +23,23 @@ export class RegistrarCitaMedicaComponent implements OnInit {
   paciente:Paciente =new Paciente();
   citamedica:CitaMedica = new CitaMedica();
 
+  user:User | undefined;
+
   ngOnInit(): void {
     this.paciente.Persona = this.persona;
     this.citamedica.Hora='0';
+    this.obtenerUsuario();
+    if(this.user?.Rol=="Paciente"){
+      this.dni = this.user.Dni;
+      this.buscarDni();
+    }
+  }
+
+  obtenerUsuario(){
+    var objectUser = localStorage.getItem('user');
+    if(objectUser!=null){
+      this.user = JSON.parse(objectUser);
+    }
   }
 
   buscarDni(){

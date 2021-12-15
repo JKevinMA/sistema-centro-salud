@@ -7,5 +7,6 @@ export class CitaMedica{
     Hora!:string;
     Asistencia!:string;
 
+    estaVencido!:boolean;
     Persona!:Persona;
 }

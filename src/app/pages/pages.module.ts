@@ -6,6 +6,7 @@ import { InicioPageComponent } from './inicio-page/inicio-page.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ModulesModule } from '../modules/modules.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     ModulesModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   exports:[
     LoginPageComponent,

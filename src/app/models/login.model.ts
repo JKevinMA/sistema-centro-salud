@@ -8,6 +8,7 @@ export interface User {
     Nombre: string;
     Rol:    string;
     Persona_idPersona:number;
+    Dni:number;
 }
 
 export interface Login{

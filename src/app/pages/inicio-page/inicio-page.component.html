@@ -116,7 +116,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item" *ngIf="user!.Rol=='Recepcionista'">
+                    <li class="nav-item" *ngIf="user!.Rol=='Recepcionista' || user!.Rol=='Paciente' || user!.Rol=='Medico'">
                         <a class="nav-link" >
                             <i class="nav-icon fas fa-calendar-day"></i>
                             <p>
@@ -125,24 +125,20 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="user!.Rol=='Paciente' || user!.Rol=='Recepcionista'" >
                                 <a class="nav-link" routerLinkActive="active"
                                     [routerLink]="['/inicio/reg-cita-medica']">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Registrar Cita Médica</p>
                                 </a>
                             </li>
-                            
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="user!.Rol=='Paciente' || user!.Rol=='Medico'" >
                                 <a class="nav-link" routerLinkActive="active"
                                     [routerLink]="['/inicio/reporte-cita-medica']">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Reporte de Citas Médicas</p>
                                 </a>
                             </li>
-                            
                         </ul>
                     </li>
                     <li class="nav-item" *ngIf="user!.Rol=='Medico'">

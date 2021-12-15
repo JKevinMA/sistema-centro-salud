@@ -49,6 +49,18 @@ export class ApiService {
       );
   }
 
+  loginPaciente(usuario:Login){
+    return this.http.post<any>(`${this.BASE_URL}login/paciente`,usuario)
+    .pipe(
+      map( (res:ResultLogin) =>{
+        if(res!=null){
+          this.guardarUsuario(res);
+        }
+        return res;
+        }) 
+      );
+  }
+
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -85,6 +97,9 @@ export class ApiService {
   }
   obtenerPacientes(){
     return this.http.get<any>(`${this.BASE_URL}pacientes`);
+  }
+  registrarUsuarioPaciente(paciente:any){
+    return this.http.post<ResultInsert>(`${this.BASE_URL}login/registro`,paciente);
   }
 
   //Cita Medica

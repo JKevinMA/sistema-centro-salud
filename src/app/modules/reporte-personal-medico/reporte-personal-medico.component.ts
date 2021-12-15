@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Persona } from 'src/app/models/persona.model';
 import { PersonalMedico } from 'src/app/models/personal-medico';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,13 +12,23 @@ import { ApiService } from 'src/app/services/api.service';
 export class ReportePersonalMedicoComponent implements OnInit {
 
   personalmedico: PersonalMedico[]=[];
-  constructor(private api:ApiService) { }
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
+  constructor(private api:ApiService) { }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      responsive:true
+    };
     this.api.obtenerPersonalMedico().subscribe(r=>{
       if(r.status="success"){
         console.log(r);
         this.parsearPM(r.res);
+        this.dtTrigger.next();
         /* this.pacientes = r.res; */
       }
     })

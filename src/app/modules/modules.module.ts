@@ -14,6 +14,7 @@ import { ReportePacienteComponent } from './reporte-paciente/reporte-paciente.co
 import { ReporteHistoriaClinicaComponent } from './reporte-historia-clinica/reporte-historia-clinica.component';
 import { ReporteCitaMedicaComponent } from './reporte-cita-medica/reporte-cita-medica.component';
 import { ReporteAtencionMedicaComponent } from './reporte-atencion-medica/reporte-atencion-medica.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ReporteAtencionMedicaComponent } from './reporte-atencion-medica/report
     CommonModule,
     FormsModule,
     NgbModule,
-    ChartsModule
+    ChartsModule,
+    DataTablesModule
   ],
   exports:[
     RegistrarPersonalMedicoComponent,

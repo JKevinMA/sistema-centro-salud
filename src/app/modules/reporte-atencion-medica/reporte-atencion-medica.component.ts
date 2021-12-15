@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Paciente } from 'src/app/models/paciente.model';
 import { Persona } from 'src/app/models/persona.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,18 +10,31 @@ import Swal from 'sweetalert2';
   templateUrl: './reporte-atencion-medica.component.html',
   styleUrls: ['./reporte-atencion-medica.component.css']
 })
-export class ReporteAtencionMedicaComponent implements OnInit {
+export class ReporteAtencionMedicaComponent implements OnInit,OnDestroy {
 
   pacientes: Paciente[]=[];
+
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  
   constructor(private api:ApiService) { }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      responsive:true
+    };
     this.api.obtenerPacientes().subscribe(r=>{
       if(r.status="success"){
         this.parsearPaciente(r.res);
+        this.dtTrigger.next();
         /* this.pacientes = r.res; */
       }
-    })
+    });
+    
   }
   parsearPaciente(res:any){
     

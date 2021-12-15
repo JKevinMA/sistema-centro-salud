@@ -154,10 +154,8 @@ export class IdentifTendenciaComponent implements OnInit {
 
     if(probBajo>probAlto){
       this.IPA = 'No';
-      console.log();
     }else if(probAlto>probBajo){
       this.IPA = 'Si';
-      console.log();
     }
 
     /* this.radarChartData = [
@@ -167,6 +165,7 @@ export class IdentifTendenciaComponent implements OnInit {
     this.pieChartLabels= ['Alto ('+probAlto+' %)', 'Bajo ('+probBajo+' %)'];
     this.pieChartData = [probAlto,probBajo];
 
+    Swal.fire({title:'Resultado',text:this.IPA +' tiene riesgo de padecer un problema respiratorio'})
 
   }
 

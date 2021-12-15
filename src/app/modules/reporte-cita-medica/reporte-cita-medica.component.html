@@ -21,8 +21,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Lista de Citas Medicas</h3>
                     </div>
-                    <div class="card-body p-0 table-responsive">
-                        <table class="table"> 
+                    <div class="card-body table-responsive">
+                        <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"> 
                             <thead class="thead-light">
                                 <tr >
                                     <th>Id</th>
@@ -34,6 +34,8 @@
                                     <th>Edad</th>
                                     <th>Fecha</th>
                                     <th>Hora</th>
+                                    <th>Estado</th>
+                                    <th>Asistencia</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +49,10 @@
                                     <td>{{cm.Persona.Edad}}</td>
                                     <td>{{cm.Fecha |date:"mediumDate"}}</td>
                                     <td>{{cm.Hora }}</td>
+                                    <td *ngIf="cm.estaVencido" >Vencido</td>
+                                    <td *ngIf="!cm.estaVencido" >Pendiente</td>
+                                    <td *ngIf="cm.Asistencia!='--'">{{cm.Asistencia}}</td>
+                                    <td *ngIf="cm.Asistencia=='--'"><button class="btn btn-xs btn-primary"> <i class="fas fa-check"></i> Asistió</button> &nbsp; <button class="btn btn-xs btn-danger"> <i class="fas fa-times"></i> No Asistió</button></td>
                                 </tr>
                             </tbody>
                         </table>
