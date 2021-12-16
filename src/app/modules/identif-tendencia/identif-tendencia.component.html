@@ -15,7 +15,7 @@
 </section>
 <section class="content">
     <div class="container-fluid">
-        <div class="row doNotPrint">
+        <div class="row doNotPrint" *ngIf="user!.Rol!='Paciente'">
             <div class="col-md-12">
                 <div class="card card-info">
                     <div class="card-header">
@@ -285,7 +285,7 @@
                                                 id="inputIPA" [value]="paciente.Persona.Nombre?paciente.Persona.Nombre:'-'" placeholder="IPA" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group row ">
+                                    <div class="form-group row " *ngIf="user!.Rol=='Medico'">
                                         <label class="col-sm-3 col-form-label">Medico</label>
                                         <div class="col-sm-9">
                                             <input  type="text" class="form-control"
@@ -294,7 +294,7 @@
                                     </div>
                                     <div class="text-center doNotPrint">
                                         <button class="btn btn-primary" type="button"
-                                            (click)="imprimir()">Imprimir</button>
+                                            (click)="exportar()">Exportar Resultados</button>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -328,43 +328,6 @@
                                 </div>
                             </div>
                             <br><br>
-                            <!-- <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="selectDificultadRespirar" class="col-sm-3 col-form-label text-right">Dificultad para Respirar</label>
-                                        <div class="col-sm-9">
-                                            <select [(ngModel)]="paciente.DificultadRespirar" name="DificultadRespirar" id="selectDificultadRespirar"
-                                                class="custom-select">
-                                                <option value="0">No</option>
-                                                <option value="1">Sí</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="selectSilbidoPecho" class="col-sm-3 col-form-label text-right">Silbido en el Pecho</label>
-                                        <div class="col-sm-9">
-                                            <select [(ngModel)]="paciente.SilbidoPecho" name="SilbidoPecho" id="selectSilbidoPecho"
-                                                class="custom-select">
-                                                <option value="0">No</option>
-                                                <option value="1">Sí</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label for="inputObservaciones" class="col-sm-3 col-form-label text-right">Observaciones</label>
-                                        <div class="col-sm-9">
-                                            <textarea [(ngModel)]="atencionMedica.Observaciones" name="Observaciones" type="text"
-                                                class="form-control" id="inputObservaciones" placeholder="Ingrese si presenta observaciones"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="row justify-content-between doNotPrint">

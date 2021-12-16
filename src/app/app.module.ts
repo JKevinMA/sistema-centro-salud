@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PagesModule } from './pages/pages.module';
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import * as pdfFonts from "pdfmake/build/vfs_fonts"; 
+PdfMakeWrapper.setFonts(pdfFonts);
 
 @NgModule({
   declarations: [

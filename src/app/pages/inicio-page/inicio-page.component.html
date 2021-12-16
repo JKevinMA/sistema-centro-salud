@@ -86,13 +86,13 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item" >
                                 <a class="nav-link" routerLinkActive="active"
                                     [routerLink]="['/inicio/reg-paciente']">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Registrar Paciente</p>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" routerLinkActive="active"
                                     [routerLink]="['/inicio/gen-historia-clinica']">
@@ -132,7 +132,7 @@
                                     <p>Registrar Cita Médica</p>
                                 </a>
                             </li>
-                            <li class="nav-item" *ngIf="user!.Rol=='Paciente' || user!.Rol=='Medico'" >
+                            <li class="nav-item" *ngIf="user!.Rol=='Recepcionista' || user!.Rol=='Medico'" >
                                 <a class="nav-link" routerLinkActive="active"
                                     [routerLink]="['/inicio/reporte-cita-medica']">
                                     <i class="far fa-circle nav-icon"></i>
@@ -141,7 +141,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item" *ngIf="user!.Rol=='Medico'">
+                    <li class="nav-item" *ngIf="user!.Rol=='Medico' || user!.Rol=='Paciente'">
                         <a class="nav-link" >
                             <i class="nav-icon fas fa-file-medical-alt"></i>
                             <p>
@@ -150,7 +150,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="user!.Rol=='Medico'">
                                 <a class="nav-link" routerLinkActive="active"
                                 [routerLink]="['/inicio/reg-atencion-medica']"
                                    >
@@ -166,7 +166,7 @@
                                     <p>Identif. de Tendencias</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="user!.Rol=='Medico'">
                                 <a class="nav-link" routerLinkActive="active"
                                 [routerLink]="['/inicio/reporte-atencion-medica']"
                                    >
